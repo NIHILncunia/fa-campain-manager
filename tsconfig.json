@@ -1,0 +1,51 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "declaration": true,
+    "resolveJsonModule": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ESNext",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@/commands/*": [
+        "./src/commands/*"
+      ],
+      "@/config/*": [
+        "./src/config/*"
+      ],
+      "@/events/*": [
+        "./src/events/*"
+      ],
+      "@/structure/*": [
+        "./src/structure/*"
+      ],
+      "@/types/*": [
+        "./src/types/*"
+      ],
+    }
+  },
+  "include": [
+    "./src/**/*",
+    "**.*.d.ts"
+  ],
+  "exclude": [
+    "build",
+    "node_modules"
+  ]
+}

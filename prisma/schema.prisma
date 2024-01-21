@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum CampainStatus {
+  OPEN
+  CLOSE
+}
+
+model Campain {
+  id      String         @id @db.Uuid
+  created DateTime       @default(now())
+  name    String         @unique
+  status  CampainStatus? @default(OPEN)
+  Session Session[]
+  Player  Player[]
+
+  @@map("campains")
+}
+
+model Session {
+  id         String   @id @db.Uuid
+  created    DateTime @default(now())
+  Campain    Campain  @relation(fields: [campain_id], references: [id])
+  campain_id String   @db.Uuid
+  number     Int      @unique
+  name       String
+  exp        Int      @default(0)
+  pc         String?
+  gm         String?
+  bonus_pc   String?
+
+  @@map("sessions")
+}
+
+model Player {
+  id         String   @id @db.Uuid
+  created    DateTime @default(now())
+  Campain    Campain  @relation(fields: [campain_id], references: [id])
+  campain_id String   @db.Uuid
+  name       String
+  level      Int
+  class      String
+  exp        Float    @default(0) @db.DoublePrecision
+  play_count Int      @default(0)
+  play_token Int      @default(0)
+
+  @@map("players")
+}

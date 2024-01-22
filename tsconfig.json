@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "outDir": "dist",
     "module": "commonjs",
     "target": "ES5",
     "esModuleInterop": true,
@@ -14,10 +15,10 @@
     "skipLibCheck": true,
     "strict": false,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "emitDeclarationOnly": false,
     "paths": {
       "@/*": [
         "./src/*"
@@ -44,7 +45,6 @@
     "**.*.d.ts"
   ],
   "exclude": [
-    "build",
     "node_modules"
   ],
   "ts-node": {

@@ -2,14 +2,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "module": "commonjs",
-    "target": "ESNext",
+    "target": "ES5",
     "esModuleInterop": true,
     "jsx": "preserve",
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    },
     "lib": [
       "dom",
       "dom.iterable",
@@ -41,7 +36,7 @@
       ],
       "@/types/*": [
         "./src/types/*"
-      ],
+      ]
     }
   },
   "include": [
@@ -51,5 +46,8 @@
   "exclude": [
     "build",
     "node_modules"
-  ]
+  ],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
 }

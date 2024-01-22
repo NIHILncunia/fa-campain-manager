@@ -1,5 +1,5 @@
 import {
-  Client, CommandInteraction, EmbedBuilder, SlashCommandBuilder
+  Client, CommandInteraction, EmbedBuilder, PermissionFlagsBits, SlashCommandBuilder
 } from 'discord.js';
 import { Command } from '@/types/command';
 import { campain, player } from '@/utils/prisma';
@@ -9,6 +9,7 @@ const command: Command = {
   data: new SlashCommandBuilder()
     .setName('pc수정')
     .setDescription('선택한 PC를 수정합니다.')
+    .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers)
     .addStringOption((option) => (
       option
         .setName('캠페인명')

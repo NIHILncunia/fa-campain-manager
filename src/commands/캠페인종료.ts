@@ -1,5 +1,5 @@
 import {
-  Client, CommandInteraction, EmbedBuilder, SlashCommandBuilder
+  Client, CommandInteraction, EmbedBuilder, PermissionFlagsBits, SlashCommandBuilder
 } from 'discord.js';
 import { Command } from '@/types/command';
 import { campain, session } from '@/utils/prisma';
@@ -9,6 +9,7 @@ const command: Command = {
   data: new SlashCommandBuilder()
     .setName('캠페인종료')
     .setDescription('캠페인의 종료를 선언합니다.')
+    .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers)
     .addStringOption((option) => (
       option
         .setName('캠페인명')

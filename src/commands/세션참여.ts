@@ -1,5 +1,5 @@
 import {
-  Client, CommandInteraction, EmbedBuilder, SlashCommandBuilder
+  Client, CommandInteraction, EmbedBuilder, PermissionFlagsBits, SlashCommandBuilder
 } from 'discord.js';
 import * as constants from 'constants';
 import { Player } from '@prisma/client';
@@ -11,6 +11,7 @@ const command: Command = {
   data: new SlashCommandBuilder()
     .setName('세션참여')
     .setDescription('세션에 참여할 PC들을 등록합니다.')
+    .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers)
     .addStringOption((option) => (
       option
         .setName('캠페인명')

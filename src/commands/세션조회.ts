@@ -2,31 +2,30 @@ import {
   Client, CommandInteraction, EmbedBuilder, SlashCommandBuilder
 } from 'discord.js';
 import { Command } from '@/types/command';
-import { campain, player } from '@/utils/prisma';
-import { pcFullName } from '@/utils/pcFullName';
+import { campain, session } from '@/utils/prisma';
 
 const command: Command = {
   // @ts-ignore
   data: new SlashCommandBuilder()
-    .setName('pc조회')
-    .setDescription('선택한 PC에 대한 정보를 조회합니다.')
+    .setName('세션조회')
+    .setDescription('지정한 세션 정보를 조회합니다.')
     .addStringOption((option) => (
       option
         .setName('캠페인명')
-        .setDescription('캠페인 이름을 입력하세요.')
+        .setDescription('어떤 캠페인에 등록할지 입력하세요.')
         .setRequired(true)
     ))
-    .addStringOption((option) => (
+    .addNumberOption((option) => (
       option
-        .setName('이름')
-        .setDescription('PC 이름을 입력하세요.')
+        .setName('번호')
+        .setDescription('세션 번호를 입력하세요.')
         .setRequired(true)
     )),
   async execute(client: Client, interaction: CommandInteraction) {
     const campainName = interaction
       .options.get('캠페인명').value as string;
-    const pcName = interaction
-      .options.get('이름').value as string;
+    const sessionNumber = interaction
+      .options.get('번호').value as number;
 
     const findCampain = await campain.findFirst({
       where: {
@@ -51,19 +50,19 @@ const command: Command = {
       return;
     }
 
-    const findPC = await player.findFirst({
+    const findSession = await session.findFirst({
       where: {
-        name: pcName,
+        number: sessionNumber,
       },
     });
 
-    if (!findPC) {
+    if (!findSession) {
       const embed = new EmbedBuilder()
         .setColor('Red')
         .setFields([
           {
             name: '오류',
-            value: `**PC가 없습니다. 이름을 확인해주세요.**`,
+            value: `**세션을 찾을 수 없습니다.**`,
           },
         ]);
 
@@ -78,8 +77,8 @@ const command: Command = {
       .setColor('Red')
       .setFields([
         {
-          name: pcFullName[findPC.name],
-          value: `- 소속 캠페인 [${findCampain.name}]\n- 클래스 ${findPC.class} ${findPC.level} (${findPC.exp}%)\n- 세션 참여 횟수 ${findPC.play_count}회\n- 안식일 토큰 ${findPC.play_token}개`,
+          name: `[${findSession.number.toString().padStart(3, '0')} - ${findSession.name}]`,
+          value: `- 마스터 [${findSession.gm}]\n- 참여 PC [${findSession.pc}]\n- 세션 경험치 [${findSession.exp}%]`,
         },
       ]);
 

@@ -1,5 +1,5 @@
 import {
-  Client, CommandInteraction, EmbedBuilder, SlashCommandBuilder
+  Client, CommandInteraction, EmbedBuilder, PermissionFlagsBits, SlashCommandBuilder
 } from 'discord.js';
 import { Player } from '@prisma/client';
 import { Command } from '@/types/command';
@@ -10,6 +10,7 @@ const command: Command = {
   data: new SlashCommandBuilder()
     .setName('경험치정산')
     .setDescription('세션의 경험치를 정산합니다.')
+    .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers)
     .addStringOption((option) => (
       option
         .setName('캠페인명')

@@ -1,5 +1,5 @@
 import {
-  Client, CommandInteraction, EmbedBuilder, SlashCommandBuilder
+  Client, CommandInteraction, EmbedBuilder, PermissionFlagsBits, SlashCommandBuilder
 } from 'discord.js';
 import { Command } from '@/types/command';
 import { campain, player } from '@/utils/prisma';
@@ -10,6 +10,7 @@ const command: Command = {
   data: new SlashCommandBuilder()
     .setName('pc등록')
     .setDescription('새로운 PC를 등록합니다.')
+    .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers)
     .addStringOption((option) => (
       option
         .setName('캠페인명')

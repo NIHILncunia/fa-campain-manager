@@ -15,7 +15,7 @@
   },
   "homepage": "https://github.com/nihil-template/nihil-discord14-template#readme",
   "scripts": {
-    "serve": "nodemon src/index.ts"
+    "serve": "nodemon"
   },
   "keywords": [],
   "author": "NIHILncunia",

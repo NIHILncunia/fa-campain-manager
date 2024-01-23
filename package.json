@@ -15,7 +15,7 @@
   },
   "homepage": "https://github.com/nihil-template/nihil-discord14-template#readme",
   "scripts": {
-    "serve": "nodemon --exec npx ts-node@latest -r tsconfig-paths/register ./src/index.ts"
+    "start": "nodemon --exec npx ts-node@latest -r tsconfig-paths/register ./src/index.ts"
   },
   "keywords": [],
   "author": "NIHILncunia",

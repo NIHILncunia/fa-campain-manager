@@ -37,7 +37,7 @@ const command: Command = {
         .setName('안식일토큰')
         .setDescription('변경할 수량을 입력하세요.')
     )),
-  async execute(client: Client, interaction: CommandInteraction) {
+  async execute(_client: Client, interaction: CommandInteraction) {
     const campainName = interaction
       .options.get('캠페인명').value as string;
     const pcName = interaction

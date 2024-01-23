@@ -1,7 +1,6 @@
 import {
   Client, CommandInteraction, EmbedBuilder, PermissionFlagsBits, SlashCommandBuilder
 } from 'discord.js';
-import * as constants from 'constants';
 import { Player } from '@prisma/client';
 import { Command } from '@/types/command';
 import { campain, player, session } from '@/utils/prisma';
@@ -30,7 +29,7 @@ const command: Command = {
         .setDescription('참여할 PC들을 쉼표로 구분해서 입력하세요.')
         .setRequired(true)
     )),
-  async execute(client: Client, interaction: CommandInteraction) {
+  async execute(_client: Client, interaction: CommandInteraction) {
     const campainName = interaction
       .options.get('캠페인명').value as string;
     const sessionNumber = interaction
@@ -85,7 +84,7 @@ const command: Command = {
       return;
     }
 
-    const updateSession = await session.update({
+    await session.update({
       where: {
         number: sessionNumber,
       },

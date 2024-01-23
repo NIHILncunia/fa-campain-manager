@@ -22,7 +22,7 @@ const command: Command = {
         .setDescription('조회할 PC 이름들을 입력하세요. 쉼표로 구분합니다.')
         .setRequired(true)
     )),
-  async execute(client: Client, interaction: CommandInteraction) {
+  async execute(_client: Client, interaction: CommandInteraction) {
     const campainName = interaction
       .options.get('캠페인명').value as string;
     const pcNameList = interaction

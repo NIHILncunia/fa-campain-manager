@@ -16,7 +16,7 @@ const command: Command = {
         .setDescription('캠페인의 이름을 입력하세요.')
         .setRequired(true)
     )),
-  async execute(client: Client, interaction: CommandInteraction) {
+  async execute(_client: Client, interaction: CommandInteraction) {
     const campainName = interaction
       .options.get('캠페인명').value as string;
 

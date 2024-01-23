@@ -1,0 +1,1 @@
+{"version":3,"file":"Bot.d.ts","sourceRoot":"","sources":["../../src/structure/Bot.ts"],"names":[],"mappings":"AAAA,OAAO,EACL,MAAM,EAAE,UAAU,EACnB,MAAM,YAAY,CAAC;AAKpB,MAAM,CAAC,OAAO,OAAO,GAAG;aAKM,MAAM,EAAE,MAAM;IAJnC,QAAQ,0BAAiC;IAChD,OAAO,CAAC,aAAa,CAAyD;gBAGlD,MAAM,EAAE,MAAM;YAW5B,YAAY;YAsBZ,mBAAmB;YAiBnB,gBAAgB;CAc/B"}

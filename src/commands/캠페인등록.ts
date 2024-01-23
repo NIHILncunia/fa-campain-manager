@@ -17,7 +17,7 @@ const command: Command = {
         .setDescription('캠페인의 이름을 입력하세요.')
         .setRequired(true)
     )),
-  async execute(client: Client, interaction: CommandInteraction): Promise<void> {
+  async execute(_client: Client, interaction: CommandInteraction): Promise<void> {
     const campainName = interaction
       .options.get('이름').value as string;
 

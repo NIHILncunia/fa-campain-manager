@@ -29,7 +29,7 @@ const command: Command = {
         .setDescription('세션의 경험치를 입력하세요.')
         .setRequired(true)
     )),
-  async execute(client: Client, interaction: CommandInteraction) {
+  async execute(_client: Client, interaction: CommandInteraction) {
     const campainName = interaction
       .options.get('캠페인명').value as string;
     const sessionNumber = interaction
@@ -98,7 +98,7 @@ const command: Command = {
     // 이런식으로 돌려봤는데 pcList에 값이 없음.
     for (const pc of findSession.pc.split(',')) {
       // eslint-disable-next-line no-await-in-loop
-      const findPC = await player.findFirst({
+      await player.findFirst({
         where: {
           campain_id: findCampain.id,
           name: pc,
